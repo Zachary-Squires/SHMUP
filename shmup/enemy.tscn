@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://b5v347hb7slhj"]
+
+[ext_resource type="Script" path="res://enemy.gd" id="1_o2akf"]
+[ext_resource type="Texture2D" uid="uid://1qjolynqpc5e" path="res://ufoGreen.png" id="2_21pkt"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2pwi5"]
+radius = 47.0106
+
+[node name="enemy" type="RigidBody2D" groups=["SHMUP group"]]
+position = Vector2(158, 87)
+contact_monitor = true
+max_contacts_reported = 1
+script = ExtResource("1_o2akf")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, 1)
+texture = ExtResource("2_21pkt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_2pwi5")
+
+[connection signal="body_shape_entered" from="." to="." method="_on_body_shape_entered"]
